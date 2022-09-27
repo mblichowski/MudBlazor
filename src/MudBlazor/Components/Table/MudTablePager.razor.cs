@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
-using Microsoft.AspNetCore.Components;
-using MudBlazor.Utilities;
 
 namespace MudBlazor
 {
@@ -35,7 +33,7 @@ namespace MudBlazor
         [Parameter]
         public string PaginationClass { get; set; }
 
-        [CascadingParameter] public bool RightToLeft { get; set; }
+        [CascadingParameter(Name = "RightToLeft")] public bool RightToLeft { get; set; }
 
         [CascadingParameter] public TableContext Context { get; set; }
 
