@@ -26,13 +26,13 @@ namespace MudBlazor
             .AddClass(ActionsClass)
             .Build();
 
-        [Parameter] string ActionsClass { get; set; }
+        [Parameter] public string ActionsClass { get; set; }
 
-        [Parameter] bool OverrideDefaultActionsClass { get; set; }
+        [Parameter] public bool OverrideDefaultActionsClass { get; set; }
 
-        [Parameter] string PaginationClass { get; set; }
+        [Parameter] public string PaginationClass { get; set; }
 
-        [CascadingParameter(Name = "RightToLeft")]public bool RightToLeft { get; set; }
+        [CascadingParameter(Name = "RightToLeft")] public bool RightToLeft { get; set; }
 
         [CascadingParameter] public TableContext Context { get; set; }
 
