@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <!-- <Version>6.0.14-mblichowski-dev4.0.0</Version> -->
+     <version>6.1.8-mblichowski-dev1.0.0</version>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageIcon>Nuget.png</PackageIcon>
     <Company>MudBlazor</Company>
@@ -54,12 +54,12 @@
   <ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' ">
     <PackageReference Include="Microsoft.AspNetCore.Components" Version="6.0.11" />
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.11" />
-	</ItemGroup>
+  </ItemGroup>
 
-	<ItemGroup Condition=" '$(TargetFramework)' == 'net7.0' ">
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net7.0' ">
     <PackageReference Include="Microsoft.AspNetCore.Components" Version="7.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.1" />
-	</ItemGroup>
+  </ItemGroup>
 
   <Target Name="ToolRestore">
     <Exec Command="dotnet tool restore" StandardOutputImportance="high" />
