@@ -45,6 +45,14 @@ namespace MudBlazor
         [Category(CategoryTypes.TreeView.Selecting)]
         public Color CheckBoxColor { get; set; }
 
+        [Parameter]
+        [Category(CategoryTypes.TreeView.Selecting)]
+        public int? VisibleItemsLimit { get; set; }
+
+        [Parameter]
+        [Category(CategoryTypes.TreeView.Selecting)]
+        public int VisibleItemsIncrement { get; set; } = 10;
+
         /// <summary>
         /// if true, multiple values can be selected via checkboxes which are automatically shown in the tree view.
         /// </summary>
