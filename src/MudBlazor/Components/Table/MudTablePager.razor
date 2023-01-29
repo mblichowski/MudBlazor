@@ -1,4 +1,4 @@
-﻿@namespace MudBlazor
+@namespace MudBlazor
 @inherits MudComponentBase
 
 <MudToolBar @attributes="UserAttributes" Class="@Classname" Style="@Style">
@@ -40,7 +40,7 @@
     }
     @if (!HidePagination)
     {
-        <div class="mud-table-pagination-actions">
+        <div class="@ActionsClassname">
             <MudIconButton Class="mud-flip-x-rtl" Icon="@FirstIcon" Disabled="@BackButtonsDisabled" @onclick="@(() => Table.NavigateTo(Page.First))" aria-label="First page" />
             <MudIconButton Class="mud-flip-x-rtl" Icon="@BeforeIcon" Disabled="@BackButtonsDisabled" @onclick="@(() => Table.NavigateTo(Page.Previous))" aria-label="Previous page" />
             <MudIconButton Class="mud-flip-x-rtl" Icon="@NextIcon" Disabled="@ForwardButtonsDisabled" @onclick="@(() => Table.NavigateTo(Page.Next))" aria-label="Next page" />

@@ -18,8 +18,19 @@ namespace MudBlazor
             new CssBuilder("mud-table-pagination-display")
             .AddClass("mud-tablepager-left", !RightToLeft)
             .AddClass("mud-tablepager-right", RightToLeft)
-            .AddClass(Class)
+            .AddClass(PaginationClass)
             .Build();
+
+        protected string ActionsClassname =>
+            new CssBuilder(!OverrideDefaultActionsClass ? "mud-table-pagination-actions" : "")
+            .AddClass(ActionsClass)
+            .Build();
+
+        [Parameter] public string ActionsClass { get; set; }
+
+        [Parameter] public bool OverrideDefaultActionsClass { get; set; }
+
+        [Parameter] public string PaginationClass { get; set; }
 
         [CascadingParameter(Name = "RightToLeft")] public bool RightToLeft { get; set; }
 
