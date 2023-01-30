@@ -8,13 +8,16 @@
 		{
 			@if (VisibleItemsLimit > 0)
 			{
-				foreach (var item in Items.Take(_currentLimit ?? VisibleItemsLimit.Value))
+				foreach (var item in GetTrimmedItems())
 					@ItemTemplate(item)
 
-				@if (Items.Count > (_currentLimit ?? VisibleItemsLimit.Value))
+				@if (Items.Count > _currentVisibleItemsLimit)
 				{
 					<li>
-						...and @(Items.Count - (_currentLimit ?? VisibleItemsLimit)) more items. <MudButton Variant=Variant.Filled OnClick=IncrementVisibleItemsLimit>Expand (@_currentLimit)</MudButton>
+						<div class="mud-treeview-item-content gap-2 justify-end">
+							@String.Format(MudTreeRoot.VisibleItemsExtendText, Items.Count - _currentVisibleItemsLimit)
+							<MudIconButton Variant=Variant.Filled OnClick=IncrementVisibleItemsLimit Icon=@Icons.Material.Filled.MoreHoriz />
+						</div>
 					</li>
 				}
 			}
@@ -32,12 +35,17 @@
 </ul>
 
 @code{
-	private int? _currentLimit;
-	public void IncrementVisibleItemsLimit()
-	{
-		if (_currentLimit is null)
-			_currentLimit = VisibleItemsLimit;
+	private int? _currentVisibleItemsLimit;
 
-		_currentLimit += this.VisibleItemsIncrement;
+	private void IncrementVisibleItemsLimit()
+	{
+		_currentVisibleItemsLimit += this.VisibleItemsIncrement;
+	}
+
+	private IEnumerable<T> GetTrimmedItems()
+	{
+		_currentVisibleItemsLimit ??= VisibleItemsLimit;
+
+		return Items.Take(_currentVisibleItemsLimit.Value);
 	}
 }

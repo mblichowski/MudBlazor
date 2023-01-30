@@ -53,6 +53,10 @@ namespace MudBlazor
         [Category(CategoryTypes.TreeView.Selecting)]
         public int VisibleItemsIncrement { get; set; } = 10;
 
+        [Parameter]
+        [Category(CategoryTypes.TreeView.Selecting)]
+        public string VisibleItemsExtendText { get; set; } = "...and {0} more items";
+
         /// <summary>
         /// if true, multiple values can be selected via checkboxes which are automatically shown in the tree view.
         /// </summary>
@@ -152,7 +156,8 @@ namespace MudBlazor
 
         [ExcludeFromCodeCoverage]
         [Obsolete("Use SelectedValueChanged instead.", true)]
-        [Parameter] public EventCallback<T> ActivatedValueChanged
+        [Parameter]
+        public EventCallback<T> ActivatedValueChanged
         {
             get => SelectedValueChanged;
             set => SelectedValueChanged = value;
