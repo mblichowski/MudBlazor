@@ -28,6 +28,13 @@
 				</CascadingValue>
 			</div>
 		}
+		@if (PagerContent != null && (PagerPosition == TablePagerPosition.Top || PagerPosition == TablePagerPosition.TopAndBottom))
+		{
+			<div class="mud-table-pagination">
+				@PagerContent
+			</div>
+		}
+
 		<div class="mud-table-container" style="@TableStyle @(GetHorizontalScrollbarStyle())">
 			<table class="mud-table-root">
 				@if (ColGroup != null)
@@ -175,7 +182,8 @@
 				}
 			</table>
 		</div>
-		@if (PagerContent != null)
+		
+		@if (PagerContent != null && (PagerPosition == TablePagerPosition.Bottom || PagerPosition == TablePagerPosition.TopAndBottom))
 		{
 			<div class="mud-table-pagination">
 				@PagerContent

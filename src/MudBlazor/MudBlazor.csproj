@@ -6,9 +6,6 @@
 
   <PropertyGroup>
     <version>6.2.0-mblichowski-dev1.0.0</version>
-  </PropertyGroup>
-
-  <PropertyGroup>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageIcon>Nuget.png</PackageIcon>
     <Company>MudBlazor</Company>
