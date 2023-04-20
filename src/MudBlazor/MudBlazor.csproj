@@ -13,7 +13,8 @@
     <Copyright>Copyright 2022 MudBlazor</Copyright>
     <PackageTags>Blazor, MudBlazor, Material, Material Design, Components, Blazor Components, Blazor Library</PackageTags>
     <Description>MudBlazor fork by mblichowski</Description>
-    <PackageId>$(AssemblyName)-extended</PackageId>
+    <PackageId>$(AssemblyName)</PackageId>
+    <AssemblyName>$(MSBuildProjectName)-extended</AssemblyName>
     <PackageProjectUrl>http://mudblazor.com/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/mblichowski/MudBlazor-extended</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
