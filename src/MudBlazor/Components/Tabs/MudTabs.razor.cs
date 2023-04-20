@@ -49,7 +49,7 @@ namespace MudBlazor
         /// </summary>
         [Parameter]
         [Category(CategoryTypes.Tabs.Behavior)]
-        public bool NoActivePanelInitially { get; set; } = false;
+        public bool NoInitialActivePanel { get; set; } = false;
 
         /// <summary>
         /// If true, sets the border-radius to theme default.
@@ -320,7 +320,7 @@ namespace MudBlazor
                 _resizeObserver = _resizeObserverFactory.Create();
             }
 
-            if (NoActivePanelInitially)
+            if (NoInitialActivePanel)
                 _activePanelIndex = -1;
 
             Rerender();
@@ -363,7 +363,7 @@ namespace MudBlazor
         internal void AddPanel(MudTabPanel tabPanel)
         {
             _panels.Add(tabPanel);
-            if (_panels.Count == 1 && !NoActivePanelInitially)
+            if (_panels.Count == 1 && !NoInitialActivePanel)
                 ActivePanel = tabPanel;
             StateHasChanged();
         }
