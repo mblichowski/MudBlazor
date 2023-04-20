@@ -1,17 +1,10 @@
 ﻿@namespace MudBlazor.Docs.Examples
 
-<MudNumericField T=int @bind-Value=activePanelIndex Label="Active panel index" />
-
-<MudTabs Elevation="1" Rounded="true" @ref="tabs" @bind-ActivePanelIndex=activePanelIndex HideSlider=@(activePanelIndex == -1) NoActivePanelInitially=true>
+<MudTabs Elevation="1" Rounded="true" @ref="tabs">
     <MudTabPanel Text="One" @ref="panel01" ID="@("pn_one")" />
     <MudTabPanel Text="Two" @ref="panel02" ID="@("pn_two")" />
     <MudTabPanel Text="Three" @ref="panel03" ID="@("pn_three")" />
 </MudTabs>
-
-<MudText GutterBottom="true" Align="Align.Center" Class="mt-8"><b>Set Active none</b></MudText>
-<div class="d-flex justify-center">
-    <MudButton Variant="@Variant.Filled" Color="Color.Primary" OnClick="() => ActivateNone()">Set None</MudButton>
-</div>
 
 <MudText GutterBottom="true" Align="Align.Center" Class="mt-8"><b>Set Active by Index</b></MudText>
 <div class="d-flex justify-center">
@@ -33,17 +26,10 @@
 </div>
 
 @code {
-    int activePanelIndex = -1;
-
     MudTabs tabs;
     MudTabPanel panel01;
     MudTabPanel panel02;
     MudTabPanel panel03;
-
-    void ActivateNone()
-    {
-        tabs.ActivatePanel(panel: null);
-    }
 
     void Activate(int index)
     {
