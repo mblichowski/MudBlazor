@@ -320,6 +320,9 @@ namespace MudBlazor
                 _resizeObserver = _resizeObserverFactory.Create();
             }
 
+            if (NoActivePanelInitially)
+                _activePanelIndex = -1;
+
             Rerender();
         }
 
