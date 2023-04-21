@@ -52,6 +52,13 @@ namespace MudBlazor
         public bool NoInitialActivePanel { get; set; } = false;
 
         /// <summary>
+        /// If true, active panel is being toggled on header click.
+        /// </summary>
+        [Parameter]
+        [Category(CategoryTypes.Tabs.Behavior)]
+        public bool ToggleActivePanel { get; set; } = false;
+
+        /// <summary>
         /// If true, sets the border-radius to theme default.
         /// </summary>
         [Parameter]
@@ -432,6 +439,13 @@ namespace MudBlazor
             if (!panel.Disabled || ignoreDisabledState)
             {
                 var index = _panels.IndexOf(panel);
+
+                if (ToggleActivePanel && ActivePanelIndex == index)
+                {
+                    ActivePanelIndex = -1;
+                }
+                else
+                {
                 var previewArgs = new TabInteractionEventArgs { PanelIndex = index, InteractionType = TabInteractionType.Activate };
 
                 if (OnPreviewInteraction != null)
@@ -446,6 +460,8 @@ namespace MudBlazor
                 SetSliderState();
                 SetScrollButtonVisibility();
                 SetScrollabilityStates();
+                }
+
                 StateHasChanged();
             }
         }
