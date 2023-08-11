@@ -70,13 +70,6 @@ namespace MudBlazor
         public string? Rel { get; set; }
 
         /// <summary>
-        /// The value of rel attribute for web crawlers. Overrides "noopener" set by <see cref="Target"/> attribute.
-        /// </summary>
-        [Parameter]
-        [Category(CategoryTypes.Button.ClickAction)]
-        public string Rel { get; set; }
-
-        /// <summary>
         /// If true, the button will be disabled.
         /// </summary>
         [Parameter]
