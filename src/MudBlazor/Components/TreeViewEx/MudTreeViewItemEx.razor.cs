@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Microsoft.AspNetCore.Components;
@@ -18,6 +19,11 @@ namespace MudBlazor
         private bool _isChecked, _isSelected, _isServerLoaded;
         private Converter<T> _converter = new DefaultConverter<T>();
         private readonly List<MudTreeViewItemEx<T>> _childItems = new();
+
+        private HashSet<T> FilteredItems =>
+            Items is not null && MudTreeRoot.ItemsFilter is not null ?
+            Items.Where(MudTreeRoot.ItemsFilter).ToHashSet() :
+            Items;
 
         protected string Classname =>
         new CssBuilder("mud-treeview-item")
@@ -288,7 +294,7 @@ namespace MudBlazor
         public bool Loading { get; set; }
 
         bool HasChild => ChildContent != null ||
-             (MudTreeRoot != null && Items != null && Items.Count != 0) ||
+             (MudTreeRoot != null && FilteredItems != null && FilteredItems.Count != 0) ||
              (MudTreeRoot?.ServerData != null && _canExpand && !_isServerLoaded && (Items == null || Items.Count == 0));
 
         protected bool IsChecked

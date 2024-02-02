@@ -14,6 +14,8 @@ namespace MudBlazor
         private HashSet<MudTreeViewItemEx<T>> _selectedValues;
         private List<MudTreeViewItemEx<T>> _childItems = new();
 
+        private HashSet<T> FilteredItems => Items.Where(ItemsFilter).ToHashSet();
+
         protected string Classname =>
         new CssBuilder("mud-treeview")
           .AddClass("mud-treeview-dense", Dense)
@@ -160,9 +162,6 @@ namespace MudBlazor
         [Parameter]
         [Category(CategoryTypes.TreeView.Data)]
         public Func<T, bool> ItemsFilter { get; set; }
-
-        private HashSet<T> _filteredItems =>
-            Items.Where(ItemsFilter).ToHashSet();
 
         [Parameter]
         [Category(CategoryTypes.TreeView.Data)]

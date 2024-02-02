@@ -4,7 +4,6 @@
 
 <li @attributes="UserAttributes" class="@Classname" style="@Style">
 	<div class="@ContentClassname" @onclick="OnItemClicked" @onclick:stopPropagation="true" @ondblclick="OnItemDoubleClicked" @ondblclick:stopPropagation="true">
-        <p>filter: @MudTreeRoot.ItemsFilter(this.Value)</p>
 		@if (Content != null)
 		{
 			@Content
@@ -51,17 +50,16 @@
 			}
 		}
 	</div>
-	@if (HasChild && Items.Any(MudTreeRoot.ItemsFilter))
-	{
+    @if (HasChild)
+    {
 		<MudCollapse Expanded="@Expanded">
 			<CascadingValue Value="@MudTreeRoot" IsFixed="true">
 				<CascadingValue Value="this" IsFixed="true">
-					<MudTreeView Items="Items.Where(MudTreeRoot.ItemsFilter).ToHashSet()" ItemTemplate="MudTreeRoot.ItemTemplate" Class="mud-treeview-group"
+                    <MudTreeView Items="FilteredItems" ItemTemplate="MudTreeRoot.ItemTemplate" Class="mud-treeview-group"
 						EnableShowAllItemsButton=MudTreeRoot.EnableShowAllItemsButton
 						VisibleItemsExtendText=MudTreeRoot.VisibleItemsExtendText
 						VisibleItemsLimit=MudTreeRoot.VisibleItemsLimit 
 						VisibleItemsIncrement=MudTreeRoot.VisibleItemsIncrement>
-                        <p>filter: @Items.Any(MudTreeRoot.ItemsFilter)</p>
 						@ChildContent
 					</MudTreeView>
 				</CascadingValue>
