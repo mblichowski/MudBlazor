@@ -155,9 +155,21 @@ namespace MudBlazor
             {
                 // The cycle is forced with the following steps: true, false, indeterminate, true, false, indeterminate...
                 var boolValue = (bool?)(object?)_value;
+
+                //  mblichowski extension
+                if (ReverseTriState)
+                {
+                    return boolValue switch
+                    {
+                        null => SetBoolValueAsync(false),
+                        true => SetBoolValueAsync(null),
+                        _ => SetBoolValueAsync(true)
+                    };
+                }
+
                 if (!boolValue.HasValue)
                 {
-                    return SetBoolValueAsync(!ReverseTriState);
+                    return SetBoolValueAsync(true);
                 }
 
                 return boolValue.Value
