@@ -129,6 +129,13 @@ namespace MudBlazor
         [Category(CategoryTypes.FormComponent.Validation)]
         public bool TriState { get; set; }
 
+        /// <summary>
+        /// The original value cycle goes like this: true, false, indeterminate, true, false, indeterminate, and so on.
+        /// This can be changed to false, true, indeterminate and so on, when this parameter is set to true.
+        /// </summary>
+        [Parameter]
+        public bool ReverseTriState { get; set; }
+
         private string GetIcon()
         {
             return BoolValue switch
@@ -148,6 +155,18 @@ namespace MudBlazor
             {
                 // The cycle is forced with the following steps: true, false, indeterminate, true, false, indeterminate...
                 var boolValue = (bool?)(object?)_value;
+
+                //  mblichowski extension
+                if (ReverseTriState)
+                {
+                    return boolValue switch
+                    {
+                        null => SetBoolValueAsync(false),
+                        true => SetBoolValueAsync(null),
+                        _ => SetBoolValueAsync(true)
+                    };
+                }
+
                 if (!boolValue.HasValue)
                 {
                     return SetBoolValueAsync(true);
