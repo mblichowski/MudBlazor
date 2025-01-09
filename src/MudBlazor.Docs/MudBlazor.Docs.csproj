@@ -1,4 +1,4 @@
-﻿<!--https://docs.microsoft.com/en-us/visualstudio/msbuild/msbuild-reference -->
+<!--https://docs.microsoft.com/en-us/visualstudio/msbuild/msbuild-reference -->
 <!--Use: dotnet msbuild -preprocess:<fileName>.xml to evaluate this project-->
 <Project Sdk="Microsoft.NET.Sdk.Razor">
 
@@ -12,10 +12,10 @@
   </PropertyGroup>
 
   <!--Project path for code generator-->
-  <!--<PropertyGroup>
+  <PropertyGroup>
     <BinDocsCompiler>$(SolutionDir)MudBlazor.Docs.Compiler/bin/Debug/net8.0/MudBlazor.Docs.Compiler.dll</BinDocsCompiler>
-    <ProjectDocsCompiler>dotnet run - -configuration release - -project "$(SolutionDir)MudBlazor.Docs.Compiler/MudBlazor.Docs.Compiler.csproj"</ProjectDocsCompiler>
-  </PropertyGroup>-->
+    <ProjectDocsCompiler>dotnet run --configuration release --project "$(SolutionDir)MudBlazor.Docs.Compiler/MudBlazor.Docs.Compiler.csproj"</ProjectDocsCompiler>
+  </PropertyGroup>
 
   <!--Execute the code generator-->
   <Target Name="CompileDocs" BeforeTargets="BeforeBuild">
