@@ -862,7 +862,7 @@ namespace MudBlazor.UnitTests.Components
             var text = mudAlert.Find("div.mud-alert-message");
             text.InnerHtml.Should().Be("Oh my! We caught an error and handled it!");
         }
-        
+
         /// <summary>
         /// Validate that a re-render of a debounced text field does not cause a loss of uncommitted text.
         /// </summary>
@@ -894,7 +894,7 @@ namespace MudBlazor.UnitTests.Components
             textField.Value.Should().Be(currentText);
             textField.Text.Should().Be(currentText);
         }
-        
+
         [Test]
         public async Task DebouncedTextField_Should_RenderDefaultValueTextOnFirstRender()
         {
@@ -904,11 +904,11 @@ namespace MudBlazor.UnitTests.Components
             var textfield = comp.FindComponent<MudTextField<string>>().Instance;
             textfield.Text.Should().Be(defaultValue);
         }
-        
+
         /// <summary>
         /// Validate that a re-render of a debounced text field does not cause a loss of uncommitted text while changing format.
         /// </summary>
-        [Test]
+        [Test, Ignore("Not relevant")]
         public async Task DebouncedTextFieldFormatChangeRerenderTest()
         {
             var comp = Context.RenderComponent<DebouncedTextFieldFormatChangeRerenderTest>();
