@@ -19,7 +19,14 @@
                           @attributes="UserAttributes" OnBlur="@OnBlurAsync">
                     @if (CanRenderValue)
                     {
-                        @GetSelectedValuePresenter()
+                        @if (RenderUsingToStringFunc)
+                        {
+                            @ToStringFunc(Value)
+                        }
+                        else
+                        {
+                            @GetSelectedValuePresenter()
+                        }
                     }
                 </MudInput>
 				<MudPopover Open=@(_isOpen) MaxHeight="@MaxHeight" AnchorOrigin="@AnchorOrigin" TransformOrigin="@TransformOrigin" Class="@PopoverClass" RelativeWidth="true">

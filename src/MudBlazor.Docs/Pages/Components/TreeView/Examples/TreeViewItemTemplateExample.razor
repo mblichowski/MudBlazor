@@ -1,7 +1,7 @@
 ﻿@namespace MudBlazor.Docs.Examples
 
 <MudPaper Width="300px" Elevation="0">
-    <MudTreeView Items="TreeItems" MultiSelection="true" @bind-ActivatedValue="ActivatedValue" @bind-SelectedValues="SelectedValues" 
+    <MudTreeView Items="TreeItems" MultiSelection="true" @bind-SelectedValues="SelectedValues" @bind-SelectedValue=SelectedValue
         VisibleItemsExtendText="give me more!" VisibleItemsIncrement=2 VisibleItemsLimit=2 EnableShowAllItemsButton=true>
         <ItemTemplate>
             <MudTreeViewItem @bind-Expanded="@context.IsExpanded" Items="@context.TreeItems" Value="@context"
@@ -11,12 +11,12 @@
 </MudPaper>
 
 <div style="width: 100%">
-    <MudText Typo="@Typo.subtitle1">Activated item: @(ActivatedValue?.Title)</MudText>
+    <MudText Typo="@Typo.subtitle1">Activated item: @(SelectedValue?.Title)</MudText>
     <MudText Typo="@Typo.subtitle1">Sum of selected items: @GetSelectedSum()</MudText>
 </div>
 
 @code {
-    private TreeItemData ActivatedValue { get; set; }
+    private TreeItemData SelectedValue { get; set; }
 
     private HashSet<TreeItemData> SelectedValues { get; set; }
 

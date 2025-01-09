@@ -134,6 +134,7 @@ namespace MudBlazor
         /// This can be changed to false, true, indeterminate and so on, when this parameter is set to true.
         /// </summary>
         [Parameter]
+        [Category(CategoryTypes.FormComponent.Behavior)]
         public bool ReverseTriState { get; set; }
 
         private string GetIcon()

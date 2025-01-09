@@ -67,11 +67,11 @@ namespace MudBlazor.UnitTests.Other
                 typeof(MudRatingItem),  // TODO: remove it later; see also: https://github.com/MudBlazor/MudBlazor/discussions/3452
             };
 
-            bool isTestOK = true;
-
             IEnumerable<Type> components = typeof(MudElement).Assembly.GetTypes()
                                                                       .Where(type => type.IsSubclassOf(typeof(MudComponentBase)))
                                                                       .Except(exceptions);
+
+            var componentsWithPropsWithoutCategories = new List<string>();
 
             foreach (Type component in components)
             {
@@ -83,12 +83,12 @@ namespace MudBlazor.UnitTests.Other
                         property.GetCustomAttribute<ParameterAttribute>() != null &&  // property has the [Parameter] attribute
                         property.GetCustomAttribute<CategoryAttribute>() == null)     // property doesn't have a category
                     {
-                        isTestOK = false;
+                        componentsWithPropsWithoutCategories.Add($"{component.FullName} Property={property.Name}");
                     }
                 }
             }
 
-            Assert.True(isTestOK, "Some component properties don't have categories.");
+            Assert.True(componentsWithPropsWithoutCategories.Count == 0, "Some component properties don't have categories: " + string.Join(", ", componentsWithPropsWithoutCategories));
         }
 
         // Returns the class that declares the specified method.
