@@ -156,6 +156,13 @@ namespace MudBlazor
         public RenderFragment ChildContent { get; set; }
 
         /// <summary>
+        /// Always render selected value using ToStringFunc.
+        /// </summary>
+        [Parameter]
+        [Category(CategoryTypes.FormComponent.Behavior)]
+        public bool RenderUsingToStringFunc { get; set; }
+
+        /// <summary>
         /// User class names for the popover, separated by space
         /// </summary>
         [Parameter]
