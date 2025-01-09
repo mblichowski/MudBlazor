@@ -18,35 +18,35 @@
   </PropertyGroup>-->
 
   <!--Execute the code generator-->
-  <Target Name="CompileDocs" BeforeTargets="BeforeBuild">
-    <!--Command-line for the code generator-->
+  <!--<Target Name="CompileDocs" BeforeTargets="BeforeBuild">
+    --><!--Command-line for the code generator--><!--
     <Message Text="Generating Docs and Tests" Importance="high" />
     <Exec Command="dotnet &quot;$(BinDocsCompiler)&quot;" Condition="Exists('$(BinDocsCompiler)')" />
     <Exec Command="$(ProjectDocsCompiler)" Condition="!Exists('$(BinDocsCompiler)')" />
-  </Target>
+  </Target>-->
 
   <!--This file contains any ExampleCode that is new and needs including in the build -->
-  <Target Name="ReadFromFile" DependsOnTargets="CompileDocs">
+  <!--<Target Name="ReadFromFile" DependsOnTargets="CompileDocs">
     <ItemGroup>
       <NewFiles Include="NewFilesToBuild.txt" />
     </ItemGroup>
     <ReadLinesFromFile File="@(NewFiles)">
       <Output TaskParameter="Lines" ItemName="NewExampleCodeToBuild" />
     </ReadLinesFromFile>
-  </Target>
+  </Target>-->
 
   <!--Add Content that is being generated as part of the build cycle-->
   <!--We need to do this because the project is not yet aware of files that were generated after the build started-->  
-  <Target Name="IncludeGeneratedFiles" BeforeTargets="BeforeBuild" DependsOnTargets="CompileDocs;ReadFromFile">
+  <!--<Target Name="IncludeGeneratedFiles" BeforeTargets="BeforeBuild" DependsOnTargets="CompileDocs;ReadFromFile">
     <ItemGroup>
-      <!--Include without duplication-->
+      --><!--Include without duplication--><!--
       <_NewCompiledSnippets Include="Models\Snippets.generated.cs" Exclude="@(Compile)" />
       <_NewCompiledDocsStrings Include="Models\DocStrings.generated.cs" Exclude="@(Compile)" />
       <Compile Include="@(_NewCompiledSnippets)" />
       <Compile Include="@(_NewCompiledDocsStrings)" />
       <EmbeddedResource Include="@(NewExampleCodeToBuild)" Condition="@(NewExampleCodeToBuild-&gt;Count()) != 0" />
     </ItemGroup>
-  </Target>
+  </Target>-->
  
   <!--Update ExampleCode-->
   <ItemGroup>
