@@ -4,7 +4,7 @@
 <div>
     <MudSelect T="string" Variant="Variant.Text"
                @bind-Value="fruit"
-               Direction="Direction.Bottom" Dense="true"
+               AnchorOrigin="Origin.BottomCenter" Dense="true"
                SelectedValuesChanged="@(() => FruitChanged(null))">
 
         <MudSelectItem Value="@("Apple")">Apple</MudSelectItem>
