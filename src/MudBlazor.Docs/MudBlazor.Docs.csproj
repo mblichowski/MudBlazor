@@ -10,44 +10,7 @@
   <PropertyGroup>
     <SolutionDir Condition=" '$(SolutionDir)' == '' ">$(MSBuildThisFileDirectory)../</SolutionDir>
   </PropertyGroup>
-
-  <!--Project path for code generator-->
-  <!--<PropertyGroup>
-    <BinDocsCompiler>$(SolutionDir)MudBlazor.Docs.Compiler/bin/Debug/net8.0/MudBlazor.Docs.Compiler.dll</BinDocsCompiler>
-    <ProjectDocsCompiler>dotnet run - -configuration release - -project "$(SolutionDir)MudBlazor.Docs.Compiler/MudBlazor.Docs.Compiler.csproj"</ProjectDocsCompiler>
-  </PropertyGroup>-->
-
-  <!--Execute the code generator-->
-  <!--<Target Name="CompileDocs" BeforeTargets="BeforeBuild">
-    --><!--Command-line for the code generator--><!--
-    <Message Text="Generating Docs and Tests" Importance="high" />
-    <Exec Command="dotnet &quot;$(BinDocsCompiler)&quot;" Condition="Exists('$(BinDocsCompiler)')" />
-    <Exec Command="$(ProjectDocsCompiler)" Condition="!Exists('$(BinDocsCompiler)')" />
-  </Target>-->
-
-  <!--This file contains any ExampleCode that is new and needs including in the build -->
-  <!--<Target Name="ReadFromFile" DependsOnTargets="CompileDocs">
-    <ItemGroup>
-      <NewFiles Include="NewFilesToBuild.txt" />
-    </ItemGroup>
-    <ReadLinesFromFile File="@(NewFiles)">
-      <Output TaskParameter="Lines" ItemName="NewExampleCodeToBuild" />
-    </ReadLinesFromFile>
-  </Target>-->
-
-  <!--Add Content that is being generated as part of the build cycle-->
-  <!--We need to do this because the project is not yet aware of files that were generated after the build started-->  
-  <!--<Target Name="IncludeGeneratedFiles" BeforeTargets="BeforeBuild" DependsOnTargets="CompileDocs;ReadFromFile">
-    <ItemGroup>
-      --><!--Include without duplication--><!--
-      <_NewCompiledSnippets Include="Models\Snippets.generated.cs" Exclude="@(Compile)" />
-      <_NewCompiledDocsStrings Include="Models\DocStrings.generated.cs" Exclude="@(Compile)" />
-      <Compile Include="@(_NewCompiledSnippets)" />
-      <Compile Include="@(_NewCompiledDocsStrings)" />
-      <EmbeddedResource Include="@(NewExampleCodeToBuild)" Condition="@(NewExampleCodeToBuild-&gt;Count()) != 0" />
-    </ItemGroup>
-  </Target>-->
- 
+   
   <!--Update ExampleCode-->
   <ItemGroup>
     <EmbeddedResource Include="Pages\**\*.html" />
@@ -86,7 +49,6 @@
   <ItemGroup>
     <ProjectReference Include="../MudBlazor/MudBlazor.csproj" />
     <ProjectReference Include="../MudBlazor.Examples.Data/MudBlazor.Examples.Data.csproj" />
-    <ProjectReference Include="..\MudBlazor.SourceCodeGenerator\MudBlazor.SourceCodeGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
   </ItemGroup>
 
   <!--Excubo  webcompiler -  used for scss and js compilation-->
